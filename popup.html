@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Compass Staff Filter</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 13px;
+      background: #f5f6f8;
+      color: #1a2230;
+      width: 320px;
+      min-height: 200px;
+    }
+
+    header {
+      background: #545f73;
+      color: #fff;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header svg { flex-shrink: 0; }
+
+    header h1 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    header p {
+      font-size: 11px;
+      opacity: 0.75;
+      margin-top: 2px;
+    }
+
+    main { padding: 12px 14px; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #79859a;
+      margin-bottom: 8px;
+    }
+
+    #filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #e0e3ea;
+      border-radius: 6px;
+      padding: 6px 10px;
+      gap: 8px;
+    }
+
+    .filter-text {
+      flex: 1;
+      font-size: 12px;
+      color: #203249;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #9aa3b2;
+      padding: 2px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+
+    .delete-btn:hover { color: #e05252; }
+
+    .add-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    #new-filter {
+      flex: 1;
+      border: 1px solid #c8cdd8;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: #203249;
+      outline: none;
+      background: #fff;
+    }
+
+    #new-filter:focus { border-color: #545f73; }
+
+    #add-btn {
+      background: #545f73;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    #add-btn:hover { background: #3e4a5c; }
+
+    .status {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #79859a;
+      text-align: center;
+      min-height: 16px;
+    }
+
+    .status.ok { color: #2e7d32; }
+  </style>
+</head>
+<body>
+  <header>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 22C4 17.58 7.58 14 12 14C16.42 14 20 17.58 20 22H18C18 18.69 15.31 16 12 16C8.69 16 6 18.69 6 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13ZM12 11C14.21 11 16 9.21 16 7C16 4.79 14.21 3 12 3C9.79 3 8 4.79 8 7C8 9.21 9.79 11 12 11Z" fill="white"/>
+      <line x1="3" y1="3" x2="21" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <h1>Compass Staff Filter</h1>
+      <p>Hide system accounts from the staff directory</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-label">Filtered phrases (case-insensitive)</div>
+    <div id="filter-list"></div>
+
+    <div class="add-row">
+      <input id="new-filter" type="text" placeholder='e.g. (DOE Integration)' />
+      <button id="add-btn">Add</button>
+    </div>
+
+    <div class="status" id="status"></div>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

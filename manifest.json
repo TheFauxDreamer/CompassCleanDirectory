@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Compass Staff Directory Filter",
+  "description": "Hide all the support accounts from the Compass staff directory",
+  "version": "1.0",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "*://*.compass.education/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.compass.education/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Compass Staff Filter"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
